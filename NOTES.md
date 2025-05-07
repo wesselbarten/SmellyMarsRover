@@ -1,7 +1,6 @@
 # TODO
 Readability:
 - Class RoverState:
-  - Magic constants for instruction
 
 
 # In progress
@@ -23,3 +22,4 @@ Readability:
 - Class RoverState:
   - Unclear variable names
   - Magic constants for direction
+  - Magic constants for instruction

@@ -5,6 +5,10 @@ private const val DIRECTION_WEST = 'W'
 private const val DIRECTION_SOUTH = 'S'
 private const val DIRECTION_EAST = 'E'
 
+private const val INSTRUCTION_ROTATE_LEFT = 'L'
+private const val INSTRUCTION_ROTATE_RIGHT = 'R'
+private const val INSTRUCTION_MOVE = 'M'
+
 class Rover(startingPosition: String) {
 
     private var rs = RoverState()
@@ -23,7 +27,7 @@ class Rover(startingPosition: String) {
     fun go(instructions: String) {
         for (instruction in instructions) {
             when (instruction) {
-                'L' -> {
+                INSTRUCTION_ROTATE_LEFT -> {
                     when (rs.direction) {
                         DIRECTION_EAST -> rs.direction = DIRECTION_NORTH
                         DIRECTION_NORTH -> rs.direction = DIRECTION_WEST
@@ -32,7 +36,7 @@ class Rover(startingPosition: String) {
                     }
                 }
 
-                'R' -> {
+                INSTRUCTION_ROTATE_RIGHT -> {
                     when (rs.direction) {
                         DIRECTION_EAST -> rs.direction = DIRECTION_SOUTH
                         DIRECTION_SOUTH -> rs.direction = DIRECTION_WEST
@@ -41,7 +45,7 @@ class Rover(startingPosition: String) {
                     }
                 }
 
-                'M' -> {
+                INSTRUCTION_MOVE -> {
                     when (rs.direction) {
                         DIRECTION_EAST -> rs.xPosition++
                         DIRECTION_SOUTH -> rs.yPosition--
