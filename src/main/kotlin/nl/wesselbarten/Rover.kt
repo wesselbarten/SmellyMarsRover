@@ -1,7 +1,12 @@
 package nl.wesselbarten
 
-class Rover {
-    constructor(p: String) {
+class Rover(p: String) {
+
+    private var rs = RoverState()
+    val xyd: String
+        get() = "${rs.xx} ${rs.yy} ${rs.dd}"
+
+    init {
         val s = p.split(' ')
         if (s.size >= 3) {
             rs.xx = s[0].toInt()
@@ -20,14 +25,9 @@ class Rover {
         }
     }
 
-    val xyd: String
-        get() = "${rs.xx} ${rs.yy} ${rs.dd}"
-
     fun pos(): String {
         return xyd
     }
-
-    private var rs = RoverState()
 }
 
 class RoverState {
