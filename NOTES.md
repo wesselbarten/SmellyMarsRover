@@ -1,6 +1,6 @@
 # TODO
 Readability:
-- Unclear variable name 'xyz'
+
 
 
 # In progress
@@ -17,3 +17,4 @@ Readability:
 - Method 'go'
   - Unclear parameter 'cms'
   - Unclear variable 'c'
+- Unclear variable name 'xyz'

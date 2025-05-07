@@ -3,7 +3,7 @@ package nl.wesselbarten
 class Rover(startingPosition: String) {
 
     private var rs = RoverState()
-    val xyd: String
+    private val pose: String
         get() = "${rs.xx} ${rs.yy} ${rs.dd}"
 
     init {
@@ -48,8 +48,8 @@ class Rover(startingPosition: String) {
         }
     }
 
-    fun pos(): String {
-        return xyd
+    fun pose(): String {
+        return pose
     }
 }
 
