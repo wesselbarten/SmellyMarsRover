@@ -13,13 +13,6 @@
 
 # In progress
 
-Mikado Primitive obsession direction
-- Replace usage in init
-- Replace usage in go
-  - Instruction rotate left
-  - Instruction rotate right
-  - Instruction move
-
 # Done
 ## Readability:
 - Class Rover:
@@ -40,3 +33,11 @@ Mikado Primitive obsession direction
   - Unclear variable names
   - Magic constants for direction
   - Magic constants for instruction
+
+
+Mikado Primitive obsession direction
+- Replace usage in init
+- Replace usage in go
+  - Instruction rotate left
+  - Instruction rotate right
+  - Instruction move

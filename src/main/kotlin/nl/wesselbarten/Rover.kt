@@ -18,8 +18,7 @@ class Rover(startingPosition: String) {
         if (positions.size >= 3) {
             rs.xPosition = positions[0].toInt()
             rs.yPosition = positions[1].toInt()
-            rs.direction = positions[2][0]
-            rs.newDirection = Direction.valueOf(positions[2][0])
+            rs.direction = Direction.valueOf(positions[2][0])
         }
     }
 
@@ -28,36 +27,24 @@ class Rover(startingPosition: String) {
             when (instruction) {
                 INSTRUCTION_ROTATE_LEFT -> {
                     when (rs.direction) {
-                        DIRECTION_EAST -> rs.direction = DIRECTION_NORTH
-                        DIRECTION_NORTH -> rs.direction = DIRECTION_WEST
-                        DIRECTION_WEST -> rs.direction = DIRECTION_SOUTH
-                        DIRECTION_SOUTH -> rs.direction = DIRECTION_EAST
-                    }
-                    when (rs.newDirection) {
-                        Direction.EAST -> rs.newDirection = Direction.NORTH
-                        Direction.NORTH -> rs.newDirection = Direction.WEST
-                        Direction.WEST -> rs.newDirection = Direction.SOUTH
-                        Direction.SOUTH -> rs.newDirection = Direction.EAST
+                        Direction.EAST -> rs.direction = Direction.NORTH
+                        Direction.NORTH -> rs.direction = Direction.WEST
+                        Direction.WEST -> rs.direction = Direction.SOUTH
+                        Direction.SOUTH -> rs.direction = Direction.EAST
                     }
                 }
 
                 INSTRUCTION_ROTATE_RIGHT -> {
                     when (rs.direction) {
-                        DIRECTION_EAST -> rs.direction = DIRECTION_SOUTH
-                        DIRECTION_SOUTH -> rs.direction = DIRECTION_WEST
-                        DIRECTION_WEST -> rs.direction = DIRECTION_NORTH
-                        DIRECTION_NORTH -> rs.direction = DIRECTION_EAST
-                    }
-                    when (rs.newDirection) {
-                        Direction.EAST -> rs.newDirection = Direction.SOUTH
-                        Direction.SOUTH -> rs.newDirection = Direction.WEST
-                        Direction.WEST -> rs.newDirection = Direction.NORTH
-                        Direction.NORTH -> rs.newDirection = Direction.EAST
+                        Direction.EAST -> rs.direction = Direction.SOUTH
+                        Direction.SOUTH -> rs.direction = Direction.WEST
+                        Direction.WEST -> rs.direction = Direction.NORTH
+                        Direction.NORTH -> rs.direction = Direction.EAST
                     }
                 }
 
                 INSTRUCTION_MOVE -> {
-                    when (rs.newDirection) {
+                    when (rs.direction) {
                         Direction.EAST -> rs.xPosition++
                         Direction.SOUTH -> rs.yPosition--
                         Direction.WEST -> rs.xPosition--
@@ -76,11 +63,10 @@ class Rover(startingPosition: String) {
 class RoverState {
     var xPosition: Int = 0
     var yPosition: Int = 0
-    var direction: Char = DIRECTION_NORTH
-    var newDirection: Direction = Direction.NORTH
+    var direction: Direction = Direction.NORTH
 
     fun pose(): String {
-        return "$xPosition $yPosition ${newDirection.char}"
+        return "$xPosition $yPosition ${direction.char}"
     }
 }
 
