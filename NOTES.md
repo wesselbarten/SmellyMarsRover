@@ -13,6 +13,13 @@
 
 # In progress
 
+Mikado Primitive obsession direction
+- Replace usage in init
+- Replace usage in go
+  - Instruction rotate left
+  - Instruction rotate right
+  - Instruction move
+
 # Done
 ## Readability:
 - Class Rover:
