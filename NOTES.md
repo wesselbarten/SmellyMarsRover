@@ -1,23 +1,32 @@
 # TODO
-Readability:
-- Class RoverState:
+- Class Rover:
+  - Variable pose is feature envy
+  - Method 'go'
+    - Long method
+    - Switch statements
+    - Feature envy
+    - Primitive obsession
 
+- Class RoverState:
+  - Data class
+  - Primitive obsession
 
 # In progress
 
 # Done
-Readability:
-- Unused constructor without parameter
-- Unused method 'g'
-- Non idiomatic constructor
-- Variables are not defined on top level
-- Constructor:
-  - Unclear parameter 'p'
-  - Unclear variable 's'
-- Method 'go':
-  - Unclear parameter 'cms'
-  - Unclear variable 'c'
-- Unclear variable name 'xyz'
+## Readability:
+- Class Rover:
+  - Unused constructor without parameter
+  - Unused method 'g'
+  - Non idiomatic constructor
+  - Variables are not defined on top level
+  - Constructor:
+    - Unclear parameter 'p'
+    - Unclear variable 's'
+  - Method 'go':
+    - Unclear parameter 'cms'
+    - Unclear variable 'c'
+  - Unclear variable name 'xyz'
 
 - Class RoverState:
   - Unclear variable names
