@@ -19,6 +19,7 @@ class Rover(startingPosition: String) {
             rs.xPosition = positions[0].toInt()
             rs.yPosition = positions[1].toInt()
             rs.direction = positions[2][0]
+            rs.newDirection = Direction.valueOf(positions[2][0])
         }
     }
 
@@ -32,6 +33,12 @@ class Rover(startingPosition: String) {
                         DIRECTION_WEST -> rs.direction = DIRECTION_SOUTH
                         DIRECTION_SOUTH -> rs.direction = DIRECTION_EAST
                     }
+                    when (rs.newDirection) {
+                        Direction.EAST -> rs.newDirection = Direction.NORTH
+                        Direction.NORTH -> rs.newDirection = Direction.WEST
+                        Direction.WEST -> rs.newDirection = Direction.SOUTH
+                        Direction.SOUTH -> rs.newDirection = Direction.EAST
+                    }
                 }
 
                 INSTRUCTION_ROTATE_RIGHT -> {
@@ -41,14 +48,20 @@ class Rover(startingPosition: String) {
                         DIRECTION_WEST -> rs.direction = DIRECTION_NORTH
                         DIRECTION_NORTH -> rs.direction = DIRECTION_EAST
                     }
+                    when (rs.newDirection) {
+                        Direction.EAST -> rs.newDirection = Direction.SOUTH
+                        Direction.SOUTH -> rs.newDirection = Direction.WEST
+                        Direction.WEST -> rs.newDirection = Direction.NORTH
+                        Direction.NORTH -> rs.newDirection = Direction.EAST
+                    }
                 }
 
                 INSTRUCTION_MOVE -> {
-                    when (rs.direction) {
-                        DIRECTION_EAST -> rs.xPosition++
-                        DIRECTION_SOUTH -> rs.yPosition--
-                        DIRECTION_WEST -> rs.xPosition--
-                        DIRECTION_NORTH -> rs.yPosition++
+                    when (rs.newDirection) {
+                        Direction.EAST -> rs.xPosition++
+                        Direction.SOUTH -> rs.yPosition--
+                        Direction.WEST -> rs.xPosition--
+                        Direction.NORTH -> rs.yPosition++
                     }
                 }
             }
@@ -64,8 +77,29 @@ class RoverState {
     var xPosition: Int = 0
     var yPosition: Int = 0
     var direction: Char = DIRECTION_NORTH
+    var newDirection: Direction = Direction.NORTH
 
     fun pose(): String {
-        return "$xPosition $yPosition $direction"
+        return "$xPosition $yPosition ${newDirection.char}"
+    }
+}
+
+enum class Direction(val char: Char) {
+    NORTH(DIRECTION_NORTH),
+    EAST(DIRECTION_EAST),
+    SOUTH(DIRECTION_SOUTH),
+    WEST(DIRECTION_WEST),
+    ;
+
+    companion object {
+        fun valueOf(char: Char): Direction {
+            return when (char) {
+                DIRECTION_NORTH -> NORTH
+                DIRECTION_EAST -> EAST
+                DIRECTION_SOUTH -> SOUTH
+                DIRECTION_WEST -> WEST
+                else -> error("This value $char is not supported to parse to a direction.")
+            }
+        }
     }
 }
