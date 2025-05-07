@@ -1,17 +1,17 @@
 package nl.wesselbarten
 
-class Rover(p: String) {
+class Rover(startingPosition: String) {
 
     private var rs = RoverState()
     val xyd: String
         get() = "${rs.xx} ${rs.yy} ${rs.dd}"
 
     init {
-        val s = p.split(' ')
-        if (s.size >= 3) {
-            rs.xx = s[0].toInt()
-            rs.yy = s[1].toInt()
-            rs.dd = s[2][0]
+        val positions = startingPosition.split(' ')
+        if (positions.size >= 3) {
+            rs.xx = positions[0].toInt()
+            rs.yy = positions[1].toInt()
+            rs.dd = positions[2][0]
         }
     }
 
