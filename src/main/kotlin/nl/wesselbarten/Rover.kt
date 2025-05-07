@@ -4,14 +4,14 @@ class Rover(startingPosition: String) {
 
     private var rs = RoverState()
     private val pose: String
-        get() = "${rs.xPosition} ${rs.yPosition} ${rs.dd}"
+        get() = "${rs.xPosition} ${rs.yPosition} ${rs.direction}"
 
     init {
         val positions = startingPosition.split(' ')
         if (positions.size >= 3) {
             rs.xPosition = positions[0].toInt()
             rs.yPosition = positions[1].toInt()
-            rs.dd = positions[2][0]
+            rs.direction = positions[2][0]
         }
     }
 
@@ -19,25 +19,25 @@ class Rover(startingPosition: String) {
         for (instruction in instructions) {
             when (instruction) {
                 'L' -> {
-                    when (rs.dd) {
-                        'E' -> rs.dd = 'N'
-                        'N' -> rs.dd = 'W'
-                        'W' -> rs.dd = 'S'
-                        'S' -> rs.dd = 'E'
+                    when (rs.direction) {
+                        'E' -> rs.direction = 'N'
+                        'N' -> rs.direction = 'W'
+                        'W' -> rs.direction = 'S'
+                        'S' -> rs.direction = 'E'
                     }
                 }
 
                 'R' -> {
-                    when (rs.dd) {
-                        'E' -> rs.dd = 'S'
-                        'S' -> rs.dd = 'W'
-                        'W' -> rs.dd = 'N'
-                        'N' -> rs.dd = 'E'
+                    when (rs.direction) {
+                        'E' -> rs.direction = 'S'
+                        'S' -> rs.direction = 'W'
+                        'W' -> rs.direction = 'N'
+                        'N' -> rs.direction = 'E'
                     }
                 }
 
                 'M' -> {
-                    when (rs.dd) {
+                    when (rs.direction) {
                         'E' -> rs.xPosition++
                         'S' -> rs.yPosition--
                         'W' -> rs.xPosition--
@@ -56,5 +56,5 @@ class Rover(startingPosition: String) {
 class RoverState {
     var xPosition: Int = 0
     var yPosition: Int = 0
-    var dd: Char = 'N'
+    var direction: Char = 'N'
 }
