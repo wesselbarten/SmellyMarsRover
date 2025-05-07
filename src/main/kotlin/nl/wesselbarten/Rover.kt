@@ -12,8 +12,6 @@ private const val INSTRUCTION_MOVE = 'M'
 class Rover(startingPosition: String) {
 
     private var rs = RoverState()
-    private val pose: String
-        get() = "${rs.xPosition} ${rs.yPosition} ${rs.direction}"
 
     init {
         val positions = startingPosition.split(' ')
@@ -58,7 +56,7 @@ class Rover(startingPosition: String) {
     }
 
     fun pose(): String {
-        return pose
+        return rs.pose()
     }
 }
 
@@ -66,4 +64,8 @@ class RoverState {
     var xPosition: Int = 0
     var yPosition: Int = 0
     var direction: Char = DIRECTION_NORTH
+
+    fun pose(): String {
+        return "$xPosition $yPosition $direction"
+    }
 }

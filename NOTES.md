@@ -1,6 +1,6 @@
 # TODO
 - Class Rover:
-  - Variable pose is feature envy
+  
   - Method 'go'
     - Long method
     - Switch statements
@@ -27,6 +27,7 @@
     - Unclear parameter 'cms'
     - Unclear variable 'c'
   - Unclear variable name 'xyz'
+  - Variable pose is feature envy
 
 - Class RoverState:
   - Unclear variable names
