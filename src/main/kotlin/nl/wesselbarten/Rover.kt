@@ -15,12 +15,35 @@ class Rover(startingPosition: String) {
         }
     }
 
-    fun go(cms: String) {
-        for (c in cms) {
-            when (c) {
-                'L' -> { when (rs.dd) { 'E' -> rs.dd = 'N' 'N' -> rs.dd = 'W' 'W' -> rs.dd = 'S' 'S' -> rs.dd = 'E' } }
-                'R' -> { when (rs.dd) { 'E' -> rs.dd = 'S' 'S' -> rs.dd = 'W' 'W' -> rs.dd = 'N' 'N' -> rs.dd = 'E' } }
-                'M' -> { when (rs.dd) { 'E' -> rs.xx++ 'S' -> rs.yy-- 'W' -> rs.xx-- 'N' -> rs.yy++ } }
+    fun go(instructions: String) {
+        for (instruction in instructions) {
+            when (instruction) {
+                'L' -> {
+                    when (rs.dd) {
+                        'E' -> rs.dd = 'N'
+                        'N' -> rs.dd = 'W'
+                        'W' -> rs.dd = 'S'
+                        'S' -> rs.dd = 'E'
+                    }
+                }
+
+                'R' -> {
+                    when (rs.dd) {
+                        'E' -> rs.dd = 'S'
+                        'S' -> rs.dd = 'W'
+                        'W' -> rs.dd = 'N'
+                        'N' -> rs.dd = 'E'
+                    }
+                }
+
+                'M' -> {
+                    when (rs.dd) {
+                        'E' -> rs.xx++
+                        'S' -> rs.yy--
+                        'W' -> rs.xx--
+                        'N' -> rs.yy++
+                    }
+                }
             }
         }
     }
