@@ -4,12 +4,12 @@ class Rover(startingPosition: String) {
 
     private var rs = RoverState()
     private val pose: String
-        get() = "${rs.xx} ${rs.yy} ${rs.dd}"
+        get() = "${rs.xPosition} ${rs.yy} ${rs.dd}"
 
     init {
         val positions = startingPosition.split(' ')
         if (positions.size >= 3) {
-            rs.xx = positions[0].toInt()
+            rs.xPosition = positions[0].toInt()
             rs.yy = positions[1].toInt()
             rs.dd = positions[2][0]
         }
@@ -38,9 +38,9 @@ class Rover(startingPosition: String) {
 
                 'M' -> {
                     when (rs.dd) {
-                        'E' -> rs.xx++
+                        'E' -> rs.xPosition++
                         'S' -> rs.yy--
-                        'W' -> rs.xx--
+                        'W' -> rs.xPosition--
                         'N' -> rs.yy++
                     }
                 }
@@ -54,7 +54,7 @@ class Rover(startingPosition: String) {
 }
 
 class RoverState {
-    var xx: Int = 0
+    var xPosition: Int = 0
     var yy: Int = 0
     var dd: Char = 'N'
 }
