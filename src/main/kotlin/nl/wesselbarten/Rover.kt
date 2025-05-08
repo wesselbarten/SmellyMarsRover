@@ -34,12 +34,7 @@ class Rover(startingPosition: String) {
                 }
 
                 INSTRUCTION_MOVE -> {
-                    when (rs.direction) {
-                        Direction.EAST -> rs.xPosition++
-                        Direction.SOUTH -> rs.yPosition--
-                        Direction.WEST -> rs.xPosition--
-                        Direction.NORTH -> rs.yPosition++
-                    }
+                    rs.move()
                 }
             }
         }
@@ -74,6 +69,15 @@ class RoverState {
             Direction.SOUTH -> Direction.WEST
             Direction.WEST -> Direction.NORTH
             Direction.NORTH -> Direction.EAST
+        }
+    }
+    
+    fun move() {
+        when (direction) {
+            Direction.EAST -> xPosition++
+            Direction.SOUTH -> yPosition--
+            Direction.WEST -> xPosition--
+            Direction.NORTH -> yPosition++
         }
     }
 }
