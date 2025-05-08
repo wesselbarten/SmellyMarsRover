@@ -33,22 +33,18 @@ class Rover(startingPosition: String) {
 
 class RoverState {
     private var position: Position = Position(0, 0)
-    private var xPosition: Int = 0
-    private var yPosition: Int = 0
     private var direction: Direction = Direction.NORTH
 
     fun setStartingPosition(startingPosition: String) {
         val positions = startingPosition.split(POSITIONS_DELIMITER)
         if (positions.size >= POSITIONS_COUNT) {
-            xPosition = positions[0].toInt()
-            yPosition = positions[1].toInt()
             position = Position(x = positions[0].toInt(), y = positions[1].toInt())
             direction = Direction.valueOf(positions[2][0])
         }
     }
 
     fun pose(): String {
-        return "$xPosition $yPosition ${direction.char}"
+        return "${position.x} ${position.y} ${direction.char}"
     }
 
     fun executeInstruction(instruction: Char) {
@@ -86,12 +82,6 @@ class RoverState {
     }
 
     private fun move() {
-        when (direction) {
-            Direction.EAST -> xPosition++
-            Direction.SOUTH -> yPosition--
-            Direction.WEST -> xPosition--
-            Direction.NORTH -> yPosition++
-        }
         when (direction) {
             Direction.EAST -> position.x++
             Direction.SOUTH -> position.y--

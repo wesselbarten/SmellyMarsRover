@@ -13,16 +13,6 @@
 
 # In progress
 
-Mikado primitive obsession position
- - xPosition:
-   - Usage in setStartingPosition
-   - Usage in pose
-   - Usage in move
- - yPosition:
-   - Usage in setStartingPosition
-   - Usage in pose
-   - Usage in move
-
 # Done
 ## Readability:
 - Class Rover:
@@ -44,10 +34,19 @@ Mikado primitive obsession position
   - Magic constants for direction
   - Magic constants for instruction
 
+  Mikado Primitive obsession direction
+  - Replace usage in init
+  - Replace usage in go
+    - Instruction rotate left
+    - Instruction rotate right
+    - Instruction move
 
-Mikado Primitive obsession direction
-- Replace usage in init
-- Replace usage in go
-  - Instruction rotate left
-  - Instruction rotate right
-  - Instruction move
+  Mikado primitive obsession position
+  - xPosition:
+    - Usage in setStartingPosition
+    - Usage in pose
+    - Usage in move
+  - yPosition:
+    - Usage in setStartingPosition
+    - Usage in pose
+    - Usage in move
