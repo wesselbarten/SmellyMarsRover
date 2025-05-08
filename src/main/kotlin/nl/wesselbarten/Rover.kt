@@ -83,10 +83,10 @@ class RoverState {
 
     private fun move() {
         when (direction) {
-            Direction.EAST -> position.x++
-            Direction.SOUTH -> position.y--
-            Direction.WEST -> position.x--
-            Direction.NORTH -> position.y++
+            Direction.EAST -> position.moveEast()
+            Direction.SOUTH -> position.moveSouth()
+            Direction.WEST -> position.moveWest()
+            Direction.NORTH -> position.moveNorth()
         }
     }
 }
@@ -114,4 +114,21 @@ enum class Direction(val char: Char) {
 class Position(
     var x: Int,
     var y: Int,
-)
+) {
+
+    fun moveEast() {
+        x++
+    }
+
+    fun moveSouth() {
+        y--
+    }
+
+    fun moveWest() {
+        x--
+    }
+
+    fun moveNorth() {
+        y++
+    }
+}
