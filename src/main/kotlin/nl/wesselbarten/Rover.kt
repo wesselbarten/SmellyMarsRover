@@ -9,6 +9,9 @@ private const val INSTRUCTION_ROTATE_LEFT = 'L'
 private const val INSTRUCTION_ROTATE_RIGHT = 'R'
 private const val INSTRUCTION_MOVE = 'M'
 
+private const val POSITIONS_COUNT = 3
+private const val POSITIONS_DELIMITER = ' '
+
 class Rover(startingPosition: String) {
 
     private var rs = RoverState()
@@ -34,8 +37,8 @@ class RoverState {
     private var direction: Direction = Direction.NORTH
 
     fun setStartingPosition(startingPosition: String) {
-        val positions = startingPosition.split(' ')
-        if (positions.size >= 3) {
+        val positions = startingPosition.split(POSITIONS_DELIMITER)
+        if (positions.size >= POSITIONS_COUNT) {
             xPosition = positions[0].toInt()
             yPosition = positions[1].toInt()
             direction = Direction.valueOf(positions[2][0])
