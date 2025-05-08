@@ -44,7 +44,7 @@ class RoverState {
     }
 
     fun pose(): String {
-        return "${position.pose()} ${direction.char}"
+        return "${position.pose()} ${direction.pose()}"
     }
 
     fun executeInstruction(instruction: Char) {
@@ -91,12 +91,14 @@ class RoverState {
     }
 }
 
-enum class Direction(val char: Char) {
+enum class Direction(private val char: Char) {
     NORTH(DIRECTION_NORTH),
     EAST(DIRECTION_EAST),
     SOUTH(DIRECTION_SOUTH),
     WEST(DIRECTION_WEST),
     ;
+
+    fun pose() = char
 
     companion object {
         fun valueOf(char: Char): Direction {
