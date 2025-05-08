@@ -24,19 +24,7 @@ class Rover(startingPosition: String) {
 
     fun go(instructions: String) {
         for (instruction in instructions) {
-            when (instruction) {
-                INSTRUCTION_ROTATE_LEFT -> {
-                    rs.rotateLeft()
-                }
-
-                INSTRUCTION_ROTATE_RIGHT -> {
-                    rs.rotateRight()
-                }
-
-                INSTRUCTION_MOVE -> {
-                    rs.move()
-                }
-            }
+            rs.executeInstruction(instruction)
         }
     }
 
@@ -54,7 +42,23 @@ class RoverState {
         return "$xPosition $yPosition ${direction.char}"
     }
 
-    fun rotateLeft() {
+    fun executeInstruction(instruction: Char) {
+        when (instruction) {
+            INSTRUCTION_ROTATE_LEFT -> {
+                rotateLeft()
+            }
+
+            INSTRUCTION_ROTATE_RIGHT -> {
+                rotateRight()
+            }
+
+            INSTRUCTION_MOVE -> {
+                move()
+            }
+        }
+    }
+
+    private fun rotateLeft() {
         direction = when (direction) {
             Direction.EAST -> Direction.NORTH
             Direction.NORTH -> Direction.WEST
@@ -63,7 +67,7 @@ class RoverState {
         }
     }
 
-    fun rotateRight() {
+    private fun rotateRight() {
         direction = when (direction) {
             Direction.EAST -> Direction.SOUTH
             Direction.SOUTH -> Direction.WEST
@@ -71,8 +75,8 @@ class RoverState {
             Direction.NORTH -> Direction.EAST
         }
     }
-    
-    fun move() {
+
+    private fun move() {
         when (direction) {
             Direction.EAST -> xPosition++
             Direction.SOUTH -> yPosition--
