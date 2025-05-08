@@ -14,12 +14,7 @@ class Rover(startingPosition: String) {
     private var rs = RoverState()
 
     init {
-        val positions = startingPosition.split(' ')
-        if (positions.size >= 3) {
-            rs.xPosition = positions[0].toInt()
-            rs.yPosition = positions[1].toInt()
-            rs.direction = Direction.valueOf(positions[2][0])
-        }
+        rs.setStartingPosition(startingPosition)
     }
 
     fun go(instructions: String) {
@@ -34,9 +29,18 @@ class Rover(startingPosition: String) {
 }
 
 class RoverState {
-    var xPosition: Int = 0
-    var yPosition: Int = 0
-    var direction: Direction = Direction.NORTH
+    private var xPosition: Int = 0
+    private var yPosition: Int = 0
+    private var direction: Direction = Direction.NORTH
+
+    fun setStartingPosition(startingPosition: String) {
+        val positions = startingPosition.split(' ')
+        if (positions.size >= 3) {
+            xPosition = positions[0].toInt()
+            yPosition = positions[1].toInt()
+            direction = Direction.valueOf(positions[2][0])
+        }
+    }
 
     fun pose(): String {
         return "$xPosition $yPosition ${direction.char}"
