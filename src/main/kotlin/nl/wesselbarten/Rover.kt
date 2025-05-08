@@ -31,7 +31,7 @@ class Rover(startingPosition: String) {
     }
 }
 
-class RoverState {
+private class RoverState {
     private var position: Position = Position(0, 0)
     private var direction: Direction = Direction.NORTH
 
@@ -91,7 +91,7 @@ class RoverState {
     }
 }
 
-enum class Direction(private val char: Char) {
+private enum class Direction(private val char: Char) {
     NORTH(DIRECTION_NORTH),
     EAST(DIRECTION_EAST),
     SOUTH(DIRECTION_SOUTH),
@@ -113,7 +113,7 @@ enum class Direction(private val char: Char) {
     }
 }
 
-class Position(
+private class Position(
     private var x: Int,
     private var y: Int,
 ) {
