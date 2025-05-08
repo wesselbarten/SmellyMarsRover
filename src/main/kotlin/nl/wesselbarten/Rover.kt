@@ -44,7 +44,7 @@ class RoverState {
     }
 
     fun pose(): String {
-        return "${position.x} ${position.y} ${direction.char}"
+        return "${position.pose()} ${direction.char}"
     }
 
     fun executeInstruction(instruction: Char) {
@@ -112,8 +112,8 @@ enum class Direction(val char: Char) {
 }
 
 class Position(
-    var x: Int,
-    var y: Int,
+    private var x: Int,
+    private var y: Int,
 ) {
 
     fun moveEast() {
@@ -131,4 +131,6 @@ class Position(
     fun moveNorth() {
         y++
     }
+
+    fun pose(): String = "$x $y"
 }
