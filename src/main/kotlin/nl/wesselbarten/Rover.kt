@@ -32,6 +32,7 @@ class Rover(startingPosition: String) {
 }
 
 class RoverState {
+    private var position: Position = Position(0, 0)
     private var xPosition: Int = 0
     private var yPosition: Int = 0
     private var direction: Direction = Direction.NORTH
@@ -41,6 +42,7 @@ class RoverState {
         if (positions.size >= POSITIONS_COUNT) {
             xPosition = positions[0].toInt()
             yPosition = positions[1].toInt()
+            position = Position(x = positions[0].toInt(), y = positions[1].toInt())
             direction = Direction.valueOf(positions[2][0])
         }
     }
@@ -90,6 +92,12 @@ class RoverState {
             Direction.WEST -> xPosition--
             Direction.NORTH -> yPosition++
         }
+        when (direction) {
+            Direction.EAST -> position.x++
+            Direction.SOUTH -> position.y--
+            Direction.WEST -> position.x--
+            Direction.NORTH -> position.y++
+        }
     }
 }
 
@@ -112,3 +120,8 @@ enum class Direction(val char: Char) {
         }
     }
 }
+
+class Position(
+    var x: Int,
+    var y: Int,
+)

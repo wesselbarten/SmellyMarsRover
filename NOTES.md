@@ -13,6 +13,16 @@
 
 # In progress
 
+Mikado primitive obsession position
+ - xPosition:
+   - Usage in setStartingPosition
+   - Usage in pose
+   - Usage in move
+ - yPosition:
+   - Usage in setStartingPosition
+   - Usage in pose
+   - Usage in move
+
 # Done
 ## Readability:
 - Class Rover:
